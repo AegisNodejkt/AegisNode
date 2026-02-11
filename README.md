@@ -1,4 +1,7 @@
-# AegisNode
+<div align="center">
+  <img src="assets/logo.png" alt="AegisNode Logo" width="200">
+  <h1>AegisNode</h1>
+</div>
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/aegis-node)
@@ -25,7 +28,7 @@ graph LR
         Rules -->|3. Redact PII| Engine
     end
     
-    Engine -->|4. Safe Request| LLM[Public LLM (OpenAI/Azure)]
+    Engine -->|4. Safe Request| LLM["Public LLM (OpenAI/Azure)"]
     LLM -->|5. Response| Proxy
     Proxy -->|6. Forward Response| User
     
