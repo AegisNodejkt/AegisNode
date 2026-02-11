@@ -1,0 +1,28 @@
+[package]
+name = "aegis-node"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+tonic = "0.10"
+prost = "0.12"
+regex = "1.10"
+# axum = "0.7" # Switching to pure Hyper as requested
+tower = { version = "0.4", features = ["util"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5" # Compatible with hyper 0.14
+tokio-stream = { version = "0.1", features = ["net"] }
+config = "0.13"
+notify = "6.1"
+async-trait = "0.1" # Needed for trait methods
+bytes = "1.0"
+http-body-util = "0.1" 
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[build-dependencies]
+tonic-build = "0.10"

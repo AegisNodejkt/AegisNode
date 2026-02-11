@@ -1,0 +1,51 @@
+# Privacy Proxy Configuration Example
+# Copy this file to config.yaml and update the values.
+
+# Destination Provider Configuration
+# Defines where the proxy should forward the requests.
+destination:
+  # Name of the destination provider (e.g., openai, azure, etc.)
+  # This should match a registered module name in the proxy engine.
+  name: "openai"
+  
+  # The base endpoint URL for the upstream service.
+  endpoint: "https://api.openai.com/v1"
+  
+  # API Key for authentication with the upstream service.
+  # Security Note: It is recommended to use environment variables for sensitive keys.
+  # This value can be overridden by the SHIELD_DESTINATION_API_KEY environment variable.
+  api_key: "${OPENAI_API_KEY}" 
+  
+  # Optional model specification (e.g., gpt-3.5-turbo, gpt-4)
+  model: "gpt-3.5-turbo"
+
+# Privacy Rules Configuration
+# Defines a list of rules to scan and redact sensitive information.
+rules:
+  # Example 1: Redact Email Addresses using Regex Pattern
+  - name: "email_filter"
+    type: "pattern" # 'pattern' uses regex, 'entity' uses simple string matching
+    value: "(?i)[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}"
+    action: "redact" # Options: 'redact', 'block', or null (monitor only)
+    replace: "[EMAIL]"
+
+  # Example 2: Redact Credit Card Numbers (Simple regex for example purposes)
+  - name: "credit_card_filter"
+    type: "pattern"
+    value: "\\b(?:\\d[ -]*?){13,16}\\b"
+    action: "redact"
+    replace: "[CREDIT_CARD]"
+
+  # Example 3: Block specific project code names
+  - name: "secret_project_blocker"
+    type: "entity"
+    value: "Project Apollo"
+    action: "block"
+    replace: "[PROJECT_NAME]"
+
+  # Example 4: Redact internal server IP addresses
+  - name: "internal_ip_redaction"
+    type: "pattern"
+    value: "(?:192\\.168\\.|10\\.|172\\.(?:1[6-9]|2[0-9]|3[0-1]))\\.[0-9]{1,3}\\.[0-9]{1,3}"
+    action: "redact"
+    replace: "[INTERNAL_IP]"
