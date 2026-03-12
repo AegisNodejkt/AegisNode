@@ -43,3 +43,4 @@ jobs:
           NEO4J_PASS: ${{ secrets.NEO4J_PASS }}
           NEO4J_DATABASE: ${{ secrets.NEO4J_DATABASE }}
           REPOSITORY_NAME: ${{ github.repository }}
+          PROVIDER: ${{ secrets.PROVIDER }}
