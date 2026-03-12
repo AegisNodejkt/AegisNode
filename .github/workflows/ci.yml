@@ -45,3 +45,4 @@ jobs:
           REPOSITORY_NAME: ${{ github.repository }}
           PROVIDER: ${{ secrets.PROVIDER }}
           EMBEDDING_PROVIDER: ${{ secrets.PROVIDER }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
