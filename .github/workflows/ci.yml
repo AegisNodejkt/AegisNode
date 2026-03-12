@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run My AI Reviewer
-        uses: AegisNodejkt/Aegis-Wilwatikta@v2
+        uses: AegisNodejkt/Aegis-Wilwatikta@main
         with:
           # Sesuaikan dengan nama di action.yml (huruf kecil)
           neo4j_uri: ${{ secrets.NEO4J_URI }}
